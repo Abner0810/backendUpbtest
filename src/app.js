@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
     res.send('API backendUpb funcionando');
 });
 
+app.get('/puntitos', (req, res) => {
+    res.send('puntitos extra');
+});
+
 app.use('/api/productos', productoRoutes);
 
 // Ruta no encontrada
