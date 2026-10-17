@@ -5,7 +5,25 @@ const productoRoutes = require('./routes/producto.routes');
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.CORS_ORIGINS
+  ? process.env.CORS_ORIGINS.split(',').map(o => o.trim())
+  : [
+      'http://localhost:3000',
+      'https://upbtest2-fb3c5.web.app',
+    ];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      }
+      return callback(new Error('Not allowed by CORS'));
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  })
+);
 app.use(express.json());
 
 app.get('/', (req, res) => {
