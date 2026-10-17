@@ -10,6 +10,7 @@ const allowedOrigins = process.env.CORS_ORIGINS
   : [
       'http://localhost:3000',
       'https://upbtest2-fb3c5.web.app',
+      'https://upbtest2-fb3c5.firebaseapp.com',
     ];
 
 app.use(
