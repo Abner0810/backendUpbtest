@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const productoRoutes = require('./routes/producto.routes');
+const puntitoRoutes = require('./routes/puntito.routes');
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.get('/puntitos', (req, res) => {
 });
 
 app.use('/api/productos', productoRoutes);
+app.use('/api/puntitos', puntitoRoutes);
 
 // Ruta no encontrada
 app.use((req, res) => {
